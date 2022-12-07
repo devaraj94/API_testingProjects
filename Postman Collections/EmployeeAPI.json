@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "c7a399fa-f6ef-4be3-9558-c97e428a22a2",
+		"name": "EmployeeAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET_employeeALL_data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b53f7d30-7b42-4579-a985-651e72982cf8",
+						"exec": [
+							"pm.test(\"validate the status code\",function(){\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							"var response = JSON.parse(responseBody);\r",
+							"tests[\"validate the employee data\"] = responseBody.has(\"Tiger Nixon\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "842e5c39-039a-4b79-ac55-a8ece8da5e98",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://dummy.restapiexample.com/api/v1/employees"
+			},
+			"response": []
+		},
+		{
+			"name": "GET_SingleEmployeeData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "95878b18-9d6c-4601-af62-d61024cec2da",
+						"exec": [
+							"pm.test(\"validate status code\",function(){\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var response=JSON.parse(responseBody);\r",
+							"tests[\"validate single user data\"]=response.data.employee_name==\"Rhona Davidson\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "adcca7d6-110b-4c33-80a9-5dc80cf8ed16",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://dummy.restapiexample.com/api/v1/employee/8"
+			},
+			"response": []
+		},
+		{
+			"name": "POST_CreateEmployeeRecord",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2acf9392-ba49-4117-a00d-19850259bcd3",
+						"exec": [
+							"pm.test(\"validate the status code\",function(){\r",
+							"pm.response.to.have.status(200);\r",
+							"\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "23e0cbab-003f-42bd-b538-9b7a5df14c53",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"shivaraj\",\"salary\":\"45000\",\"age\":\"29\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://dummy.restapiexample.com/api/v1/create"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT_UpdateEmployeeRecord",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9f76975a-6a05-4263-b068-2aaafde498c7",
+						"exec": [
+							"pm.test(\"validate status code\",function(){\r",
+							"pm.response.to.have.status(200);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var response=JSON.parse(responseBody)\r",
+							"tests[\"validate update records\"]=response.data.name== \"devu\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "6c616c4c-605a-410b-b6c9-5a60fd4f9579",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\"name\":\"devu\",\"salary\":\"39000\",\"age\":\"25\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://dummy.restapiexample.com/api/v1/update/2"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_deletingEmployeeData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0ff3a8b-9120-4195-8a95-7152dc6eda6c",
+						"exec": [
+							"\r",
+							"tests[\"validating the request body having Delete_message\"]=responseBody.has(\"message\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "7e479768-8878-4f15-bc32-32a362b6729f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://dummy.restapiexample.com/api/v1/delete/6581"
+			},
+			"response": []
+		}
+	]
+}
