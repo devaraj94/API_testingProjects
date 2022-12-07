@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "e256f516-6cbe-4173-a259-5ba3b1e2f4fa",
+		"name": "DemoRestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Page2_GET Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b28f1df4-d732-4aa0-94b3-2082174ee74a",
+						"exec": [
+							"tests[\"validating status code\"] = responseCode.code == 200;\r",
+							"\r",
+							"tests[\"validating the request body having first_name\"]=responseBody.has(\"data\");\r",
+							"\r",
+							"var response=JSON.parse(responseBody);\r",
+							"tests[\"validate first name\"]=response.page==2;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "e831689f-1083-48f5-ad79-fd14ccadc3c9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "singleUser_GET Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3046f84b-3a36-4dde-9253-9a012690a4a2",
+						"exec": [
+							"tests[\"validate the status code\"]=responseCode.code==200;\r",
+							"var response=JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"verify first name\"]=response.data.first_name==\"Janet\";\r",
+							"tests[\"verify last name\"]=response.data.last_name==\"Weaver\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "2fece8fd-98c6-45ab-a91a-b118837dc106",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://reqres.in/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "POST_Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "72c1a0e0-37f7-40ac-93f5-e37f49b6fc5e",
+						"exec": [
+							"var response=JSON.parse(responseBody);\r",
+							"tests[\"verify first name1\"]=response.data.first_name==\"Devaraj\";\r",
+							"tests[\"verify last name2\"]=response.data.last_name==\"Shivaraj\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "3259bd70-76b3-4bfa-a173-b7df6fb47210",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n    \r\n       \r\n        \"first_name\": \"Devaraj\",\r\n        \"last_name\": \"Shivaraj\"\r\n        \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "POST_LoginSuccessful",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "05025757-6e04-4d0d-a3b2-41ac365422f0",
+						"exec": [
+							"tests[\"validate token presence\"]=responseBody.has(\"token\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "1f59c0e6-e294-4f2d-a2c7-5f48d1021821",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "POST_loginUnsuccessful",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2099ce44-a2e9-4af4-ba3f-572cd2965ae3",
+						"exec": [
+							"tests[\"vaildate error message\"]=responseBody.has(\"error\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "2ece8a11-be50-48c6-9be2-60b023d543d4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/login"
+			},
+			"response": []
+		}
+	]
+}
